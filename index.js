@@ -14,6 +14,9 @@ client.on("message", (message) => {
                 message.reply("Tu peux pas ratio ça fdp");
                 let role = message.guild.roles.cache.find(role => role.name === "Goulag");
                 message.member.roles.add(role);
+                setTimeout(() => {
+                    message.member.roles.remove(role);
+                }, 10000)
             }
             else {
                 previousMessage.react("❤️");
