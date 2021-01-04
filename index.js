@@ -8,9 +8,17 @@ client.on("ready", () => {
 
 client.on("message", (message) => {
     if(message.content.toLowerCase() === "ratio") {
-        message.react("❤️");
         message.channel.fetch().then(messages => {
-            Array.from(messages.messages.cache.values())[messages.messages.cache.size - 2].react("❤️");
+            previousMessage = Array.from(messages.messages.cache.values())[messages.messages.cache.size - 2];
+            if(previousMessage.content === "**Muck Fillet**") {
+                message.reply("Tu peux pas ratio ça fdp");
+                let role = message.guild.roles.cache.find(role => role.name === "Goulag");
+                message.member.roles.add(role);
+            }
+            else {
+                previousMessage.react("❤️");
+                message.react("❤️");
+            }
         });
     }
 });
