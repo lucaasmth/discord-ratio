@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const secret = require("./secret")
 
 client.on("ready", () => {
     console.log("Ready!");
@@ -14,4 +15,4 @@ client.on("message", (message) => {
     }
 });
 
-client.login("Nzk1NzM3MTU5Mzc3MjIzNjkw.X_Nt-g.ZI6Q3o6cpNPaQqLnqKq5pVK9a6A");
+client.login(secret.token);
